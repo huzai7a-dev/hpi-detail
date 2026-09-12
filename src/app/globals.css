@@ -86,3 +86,27 @@ body {
   margin: 14px auto 0;
   border-radius: var(--radius-full);
 }
+
+.themed-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-navy-light) var(--color-surface);
+}
+
+.themed-scrollbar::-webkit-scrollbar {
+  width: 8px;
+}
+
+.themed-scrollbar::-webkit-scrollbar-track {
+  background: var(--color-surface);
+  border-radius: var(--radius-full);
+}
+
+.themed-scrollbar::-webkit-scrollbar-thumb {
+  background-color: var(--color-navy-light);
+  border-radius: var(--radius-full);
+  border: 2px solid var(--color-surface);
+}
+
+.themed-scrollbar::-webkit-scrollbar-thumb:hover {
+  background-color: var(--color-navy);
+}
