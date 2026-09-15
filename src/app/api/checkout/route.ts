@@ -46,7 +46,7 @@ export async function POST(request: Request) {
     await freemius.checkout.create({
       user: { email: values.email, firstName: values.firstName, lastName: values.lastName },
       planId: String(planId),
-      isSandbox: process.env.NODE_ENV !== "production",
+      isSandbox: process.env.FREEMIUS_SANDBOX_MODE?.trim().toLowerCase() === "true",
     })
   ).setBillingCycle("lifetime");
 
