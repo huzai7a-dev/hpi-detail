@@ -26,11 +26,18 @@ export const PACKAGE_OPTIONS: { value: PackageType; label: string; price: number
   { value: "detailed", label: "Detailed", price: 40 },
 ];
 
+export const PACKAGE_TO_FREEMIUS_PLAN_ID: Record<PackageType, number> = {
+  basic: 67518,
+  detailed: 67519,
+};
+
 export type VehicleOrderFormValues = {
   category: string;
   packageType: string;
   model: string;
   year: string;
+  firstName: string;
+  lastName: string;
   email: string;
 };
 
@@ -58,6 +65,14 @@ export function validateVehicleOrderForm(values: VehicleOrderFormValues): Vehicl
     errors.year = "Please enter the model year.";
   } else if (!YEAR_PATTERN.test(values.year) || Number(values.year) > new Date().getFullYear() + 1) {
     errors.year = "Please enter a valid 4-digit year.";
+  }
+
+  if (!values.firstName.trim()) {
+    errors.firstName = "Please enter your first name.";
+  }
+
+  if (!values.lastName.trim()) {
+    errors.lastName = "Please enter your last name.";
   }
 
   if (!values.email.trim()) {
